@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_08_130018) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_08_180754) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,34 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_130018) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.bigint "publisher_id", null: false
+    t.bigint "category_id", null: false
+    t.float "price"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_books_on_category_id"
+    t.index ["publisher_id"], name: "index_books_on_publisher_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.string "gender"
+    t.integer "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -61,6 +89,39 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_130018) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.string "title"
+    t.bigint "staff_id", null: false
+    t.integer "quantity"
+    t.float "total_price"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_invoices_on_customer_id"
+    t.index ["staff_id"], name: "index_invoices_on_staff_id"
+  end
+
+  create_table "publishers", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "email"
+    t.integer "hotline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "staffs", force: :cascade do |t|
+    t.string "name"
+    t.string "gender"
+    t.date "date_of_birth"
+    t.integer "citizen_Id"
+    t.integer "phone_number"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -80,4 +141,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_130018) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "books", "categories"
+  add_foreign_key "books", "publishers"
+  add_foreign_key "invoices", "customers"
+  add_foreign_key "invoices", "staffs"
 end

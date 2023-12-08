@@ -1,0 +1,46 @@
+<%= form_with(model: invoice) do |form| %>
+<% if invoice.errors.any? %>
+<div id="error_explanation" class="bg-red-50 p-6 rounded text-red-800">
+  <h2 class="text-lg font-semibold mb-3"><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+  <ul class="list-disc leading-relaxed">
+    <% invoice.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+  <div class="mb-6">
+        <%= form.label :customer_id, class: label_class %>
+          <%= form.text_field :customer_id, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :title, class: label_class %>
+          <%= form.text_field :title, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :staff_id, class: label_class %>
+          <%= form.text_field :staff_id, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :quantity, class: label_class %>
+          <%= form.number_field :quantity, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :total_price, class: label_class %>
+          <%= form.text_field :total_price, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :date, class: label_class %>
+          <%= form.datetime_field :date, class: input_class %>
+      </div>
+
+<%= form.submit class: button_class(theme: 'primary') %>
+
+<% if invoice.persisted? %>
+<%= link_to "Cancel", invoice, class: "text-neutral-700 underline inline-block ml-3" %>
+<% else %>
+<%= link_to "Cancel", invoices_path, class:  "text-neutral-700 underline inline-block ml-3" %>
+<% end %>
+<% end %>
