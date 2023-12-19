@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   belongs_to :category
   has_many :invoices
 
-  validates_presence_of :title, :author, :publisher, :catgory, :status
+  validates_presence_of :title, :author, :publisher, :category, :status
   validates_uniqueness_of :title
   validates_numericality_of :price
 

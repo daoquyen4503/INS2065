@@ -21,12 +21,12 @@
       </div>
   <div class="mb-6">
         <%= form.label :publisher_id, class: label_class %>
-          <%= form.text_field :publisher_id, class: input_class %>
+        <%= form.select :publisher_id, options_from_collection_for_select( Publisher.all, 'id', 'name', selected = book.publisher_id), class: label_class %>
       </div>
   <div class="mb-6">
-        <%= form.label :category_id, class: label_class %>
-          <%= form.text_field :category_id, class: input_class %>
-      </div>
+      <%= form.label :category_id, class: label_class %>
+      <%= form.select :category_id, options_from_collection_for_select(Category.all, 'id', 'category_name', selected = book.category_id), class: label_class %>
+      </div>  
   <div class="mb-6">
         <%= form.label :price, class: label_class %>
           <%= form.text_field :price, class: input_class %>
