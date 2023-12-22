@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 @import 'actiontext.css';
+
+#sign_up{
+    font-family: 'Montserrat', sans-serif;
+    font-size:150%;
+    color: #FFFFFF;
+}
