@@ -17,7 +17,11 @@
       </div>
   <div class="mb-6">
         <%= form.label :gender, class: label_class %>
+<<<<<<< HEAD
         <%= form.select :gender, ['Female', 'Male'], {}, class: 'form-control' %>
+=======
+          <%= form.text_field :gender, class: input_class %>
+>>>>>>> 1a0d1db5c10aba70877b8d486c9c5332127faf45
       </div>
   <div class="mb-6">
         <%= form.label :date_of_birth, class: label_class %>
@@ -25,11 +29,19 @@
       </div>
   <div class="mb-6">
         <%= form.label :citizen_Id, class: label_class %>
+<<<<<<< HEAD
           <%= form.text_field :citizen_Id, class: input_class %>
       </div>
   <div class="mb-6">
         <%= form.label :phone_number, class: label_class %>
           <%= form.text_field :phone_number, class: input_class %>
+=======
+          <%= form.number_field :citizen_Id, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :phone_number, class: label_class %>
+          <%= form.number_field :phone_number, class: input_class %>
+>>>>>>> 1a0d1db5c10aba70877b8d486c9c5332127faf45
       </div>
   <div class="mb-6">
         <%= form.label :address, class: label_class %>

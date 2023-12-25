@@ -1,0 +1,41 @@
+<div class="max-w-3xl mx-auto px-4">
+  <div class="flex items-center justify-between">
+    <h1 class="flex-1 font-bold text-3xl">Invoice</h1>
+
+    <div class="flex-wrap lg:flex items-center lg:space-x-3">
+      <%= link_to invoices_path, class: button_class(theme: "transparent") do %>
+      All Invoices
+      <% end %>
+      <%= link_to edit_invoice_path(@invoice), class: button_class(theme:"primary") do %>
+      Edit
+      <% end %>
+    </div>
+  </div>
+
+  <ul class="text-slate-700">
+      <li>
+        <p class="font-semibold">Customer:</p>
+        <p><%= @invoice.customer %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Title:</p>
+        <p><%= @invoice.title %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Staff:</p>
+        <p><%= @invoice.staff %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Quantity:</p>
+        <p><%= @invoice.quantity %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Total price:</p>
+        <p><%= @invoice.total_price %></p>
+      </li>
+      <li>
+        <p class="font-semibold">Date:</p>
+        <p><%= @invoice.date %></p>
+      </li>
+  </ul>
+</div>

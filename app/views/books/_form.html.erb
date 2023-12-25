@@ -20,6 +20,7 @@
           <%= form.text_field :author, class: input_class %>
       </div>
   <div class="mb-6">
+<<<<<<< HEAD
         <%= form.label :category_id, class: label_class %>
         <%= form.select :category_id, options_from_collection_for_select( Category.all, 'id', 'name', selected = book.category_id), class: label_class %>
       </div>
@@ -27,6 +28,23 @@
         <%= form.label :price, class: label_class %>
           <%= form.text_field :price, class: input_class %>
       </div>
+=======
+        <%= form.label :publisher_id, class: label_class %>
+        <%= form.select :publisher_id, options_from_collection_for_select( Publisher.all, 'id', 'name', selected = book.publisher_id), class: label_class %>
+      </div>
+  <div class="mb-6">
+      <%= form.label :category_id, class: label_class %>
+      <%= form.select :category_id, options_from_collection_for_select(Category.all, 'id', 'category_name', selected = book.category_id), class: label_class %>
+      </div>  
+  <div class="mb-6">
+        <%= form.label :price, class: label_class %>
+          <%= form.text_field :price, class: input_class %>
+      </div>
+  <div class="mb-6">
+        <%= form.label :status, class: label_class %>
+          <%= form.text_field :status, class: input_class %>
+      </div>
+>>>>>>> 1a0d1db5c10aba70877b8d486c9c5332127faf45
 
 <%= form.submit class: button_class(theme: 'primary') %>
 
